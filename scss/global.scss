@@ -1,0 +1,345 @@
+
+
+
+
+
+
+
+
+
+
+*{
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #EB0000;
+    background-image: url("../assets/mushroom-pattern.png");
+    background-size: 40px;
+    background-repeat: repeat;
+    animation: backgroundAnimation 100s linear infinite;
+}
+
+$smathphone-padding: 8px;
+
+@keyframes backgroundAnimation {
+    to{
+        background-position: 1000px 1000px;
+    }
+}
+
+.smartphone-container{
+    position: absolute;
+    width: 680px;
+    height: 300px;
+    background: #fff;
+    border-radius: 40px;
+    border: 7px solid #937E8E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    &::after{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        border: $smathphone-padding solid #211D20;
+        border-radius: 33px;
+        z-index: 1;
+        content: '';
+    }
+    .notch{
+        position: absolute;
+        width: 22px;
+        height: 90px;
+        border-radius: 50px;
+        background: #211D20;
+        left: 25px;
+        z-index: 1000;
+    }
+}
+
+.hud-status-bar{
+    position: absolute;
+    top: $smathphone-padding;
+    height: 40px;
+}
+
+.hud-status-bar-dividor{
+    position: absolute;
+    top: $smathphone-padding;
+    height: 50px;
+}
+
+.hud-life-icon{
+    position: absolute;
+    top: calc( $smathphone-padding + 7px);
+    left: 195px;
+    width: 25px;
+}
+
+#life-value-label{
+    position: absolute;
+    top: calc( $smathphone-padding + 8px);
+    left: 222px;
+    width: 25px;
+    font-family: arial;
+    font-weight: bold;
+    font-size: 17px;
+    color: #fff;
+}
+
+.hud-shild-icon{
+    position: absolute;
+    top: calc( $smathphone-padding + 7px);
+    left: 255px;
+    width: 25px;
+}
+
+#shild-value-label{
+    position: absolute;
+    top: calc( $smathphone-padding + 8px);
+    left: 283px;
+    width: 25px;
+    font-family: arial;
+    font-weight: bold;
+    font-size: 17px;
+    color: #fff;
+}
+
+.crosshair-shild-icon{
+    position: absolute;
+    top: calc( $smathphone-padding + 7px);
+    left: 375px;
+    width: 25px;
+}
+
+#bullet-value-label{
+    position: absolute;
+    top: calc( $smathphone-padding + 8px);
+    left: 402px;
+    width: 25px;
+    font-family: arial;
+    font-weight: bold;
+    font-size: 17px;
+    color: #fff;
+}
+
+.bullet-slot-container{
+    position: absolute;
+    top: calc( $smathphone-padding + 3px);
+    height: 32px;
+    right: 188px;
+}
+
+#joystick-container{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 10px;
+    left: 10px;
+}
+
+.joystick-pad{
+    position: absolute;
+    width: 100px;
+    box-sizing: border-box;
+}
+
+#joystick{
+    position: absolute;
+    width: 80px;
+    z-index: 10;
+    cursor: pointer;
+}
+
+#shoot-button{
+    position: absolute;
+    right: 70px;
+    width: 100px;
+    bottom: 30px;
+    cursor: pointer;
+    z-index: 100;
+    transform-origin: center center;
+    &:active{
+        transform: scale(0.9);
+    }
+}
+
+#reload-gun-button{
+    position: absolute;
+    width: 50px;
+    right: 15px;
+    bottom: 60px;
+    z-index: 10;
+    transform-origin: center center;
+    cursor: pointer;
+    &:active{
+        transform: scale(0.9);
+    }
+}
+
+@keyframes reloadGun {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+
+    }
+}
+
+#change-gun-button{
+    position: absolute;
+    width: 50px;
+    right: 40px;
+    bottom: 115px;
+    z-index: 10;
+    cursor: pointer;
+    &:active{
+        transform: scale(0.9);
+    }
+}
+
+#injection-button{
+    position: absolute;
+    width: 50px;
+    right: 100px;
+    bottom: 135px;
+    z-index: 10;
+    cursor: pointer;
+    &:active{
+        transform: scale(0.9);
+    }
+}
+
+#settings-button{
+    position: absolute;
+    right: 40px;
+    top: calc($smathphone-padding + 10px);
+    width: 25px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+#exit-menu-button{
+    position: absolute;
+    right: 110px;
+    top: calc($smathphone-padding + 10px);
+    width: 25px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+#hot-bar{
+    position: absolute;
+    bottom: 25px;
+    width: 200px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .hotbar-icons-placeholder{
+        position: absolute;
+        height: 100%;
+        box-sizing: border-box;
+    }
+    #hotbar-select{
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: #EB0000;
+        bottom: -7px;
+        left: 55px;
+        border-radius: 50%;
+    }
+}
+
+#bullet-slot{
+    position: absolute;
+    width: 63px;
+    height: 30px;
+    top: calc( $smathphone-padding + 5px);
+    right: 189px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    .bullet{
+        position: relative;
+        width: 15px;
+    }
+}
+
+.castle-rain-logo{
+    position: absolute;
+    top: 20px;
+    height: 90px;
+}
+
+.divice-info{
+    position: absolute;
+    font-family: arial;
+    font-weight: initial;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    width: 90%;
+    display: none;
+}
+
+.dev-container{
+    position: absolute;
+    width: auto;
+    height: 50px;
+    bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 4px;
+    input{
+        position: relative;
+        padding: 5px;
+        font-family: arial;
+        font-weight: initial;
+        font-size: 15px;
+        color: #EB0000;
+        border-radius: 5px;
+        border: 2px solid #F9D30F;
+        background: #fff;
+        outline: none;
+        height: 30px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    body{
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .smartphone-container{
+        display: none;
+    }
+
+    .divice-info{
+        display: flex;
+    }
+
+    .dev-container{
+        display: none;
+    }
+
+}
+

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+
+
+
+
+
+
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/global.css">
+    <title>Castle Rain - HUD</title>
+</head>
+<body>
+
+    <div class="smartphone-container">
+
+        <div class="notch"></div>
+
+        <img class="hud-status-bar hud" src="./assets/HUD - STATUS BAR.png">
+        <img class="hud-status-bar-dividor hud" src="./assets/HUD - STATUS BAR DIVISOR.png">
+        <img class="hud-life-icon hud" src="./assets/HUD - LIFE ICON.png">
+        <span id="life-value-label">100</span>
+        <img class="hud-shild-icon hud" src="./assets/HUD - SHILD ICON.png">
+        <span id="shild-value-label">50</span>
+        <img class="crosshair-shild-icon hud" src="./assets/HUD - CROSSHAIR ICON.png">
+        <span id="bullet-value-label">10</span>
+
+        <img class="bullet-slot-container hud" src="./assets/HUD - BULLET SLOT CONTAINER.png">
+        <div id="bullet-slot"></div>
+
+        <!-- <img class="bullet-slot-container hud" src=""> -->
+
+        <div id="joystick-container" class="hud">
+            <img class="joystick-pad" src="./assets/HUD - JOYSTICK PAD.png">
+            <img id="joystick" src="./assets/HUD - JOYSTICK 1.png">
+        </div>
+
+        <img id="shoot-button" class="hud" src="./assets/HUD - SHOOT BUTTON.png">
+        <img id="reload-gun-button" class="hud" src="./assets/HUD - RELOAD GUN BUTTON.png">
+        <img id="change-gun-button" class="hud" src="./assets/HUD - CHANGE GUN BUTTON.png">
+        <img id="injection-button" class="hud" src="./assets/HUD - INJECTION BUTTON.png">
+
+        <img id="settings-button" class="hud" src="./assets/HUD - SETTINGS BUTTON.png">
+        <img id="exit-menu-button" class="hud" src="./assets/HUD - EXIT MENU BUTTON.png">
+
+        <div id="hot-bar" class="hud">
+            <img class="hotbar-icons-placeholder" src="./assets/HUD - PLACEHOLDER ICONS.png">
+            <div id="hotbar-select"></div>
+        </div>
+
+    </div>
+
+    <img class="castle-rain-logo" src="./assets/castle-rain-logo.png">
+
+    <h1 class="divice-info">APENAS DISPONIVEL PARA COMPUTADOR</h1>
+
+    <div class="dev-container">
+        <input type="number"  id="life-input" placeholder="Vida" value="100">
+        <input type="number"  id="shild-input" placeholder="Escudo" value="50">
+    </div>
+
+    <script defer src="./index.js"></script>
+    
+</body>
+</html>
