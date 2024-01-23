@@ -14,11 +14,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.min.css">
     <title>Castle Rain - HUD</title>
 </head>
 <body>
 
-    <div class="smartphone-container">
+    <div class="smartphone-container" id="smartphone">
 
         <div class="notch"></div>
 
@@ -43,11 +44,11 @@
 
         <img id="shoot-button" class="hud" src="./assets/HUD - SHOOT BUTTON.png">
         <img id="reload-gun-button" class="hud" src="./assets/HUD - RELOAD GUN BUTTON.png">
-        <img id="change-gun-button" class="hud" src="./assets/HUD - CHANGE GUN BUTTON.png">
-        <img id="injection-button" class="hud" src="./assets/HUD - INJECTION BUTTON.png">
+        <img id="change-gun-button" class="hud default-button" src="./assets/HUD - CHANGE GUN BUTTON.png">
+        <img id="injection-button" class="hud default-button" src="./assets/HUD - INJECTION BUTTON.png">
 
-        <img id="settings-button" class="hud" src="./assets/HUD - SETTINGS BUTTON.png">
-        <img id="exit-menu-button" class="hud" src="./assets/HUD - EXIT MENU BUTTON.png">
+        <img id="settings-button" class="hud default-button" src="./assets/HUD - SETTINGS BUTTON.png">
+        <img id="exit-menu-button" class="hud default-button" src="./assets/HUD - EXIT MENU BUTTON.png">
 
         <div id="hot-bar" class="hud">
             <img class="hotbar-icons-placeholder" src="./assets/HUD - PLACEHOLDER ICONS.png">
@@ -64,6 +65,29 @@
         <input type="number"  id="life-input" placeholder="Vida" value="100">
         <input type="number"  id="shild-input" placeholder="Escudo" value="50">
     </div>
+
+    <div class="menu-container">
+        <button id="openModal"><i id="settings-icon" class="ri-settings-4-fill"></i></button>
+        <button id="toggle-fullscreen"><i id="fullscreen-icon" class="ri-fullscreen-line"></i></button>
+    </div>
+
+    <div id="modal-container">
+        <div class="modal-container-input-container">
+            <span class="modal-container-label">SOM DO BOTÃO DE ATIRAR</span>
+            <input class="modal-container-select-path" type="file" id="shootAudioSelect" accept="audio/*">
+        </div>
+        <div class="modal-container-input-container">
+            <span class="modal-container-label">SOM DO BOTÃO PADRÃO</span>
+            <input class="modal-container-select-path" type="file" id="dafaultAudioSelect" accept="audio/*">
+        </div>
+        <div class="modal-container-input-container">
+            <span class="modal-container-label">SOM DO BOTÃO DE RECARREGAR ARMA</span>
+            <input class="modal-container-select-path" type="file" id="reloadAudioSelect" accept="audio/*">
+        </div>
+        <button id="save-modal">Fechar</button>
+    </div>
+
+    <div id="modal-shild"></div>
 
     <script defer src="./index.js"></script>
     

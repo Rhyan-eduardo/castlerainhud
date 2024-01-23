@@ -8,6 +8,70 @@
 
 
 
+
+// SELECT AUDIO MODAL : 
+
+const saveModal = document.getElementById("save-modal");
+
+const shootAudioSelect = document.getElementById("shootAudioSelect");
+const defaultAudioSelect = document.getElementById("dafaultAudioSelect");
+const reloadAudioSelect = document.getElementById("reloadAudioSelect");
+
+let shootAudioSelected;
+let defaultButtonAudioSelected;
+let reloadAudioSelected;
+
+let isModal = false;
+
+saveModal.addEventListener("click", function () {
+    isModal = false;
+    modalShild.style.display = "none";
+    modalContainer.style.animation = "modalDown 0.3s linear both";
+    settingsIcon.className = "ri-settings-4-fill"
+    setTimeout(() => {
+        modalContainer.style.display = "none";
+    }, 100);
+});
+
+shootAudioSelect.addEventListener("change", function (event) {
+    const fileInput = event.target;
+    const shootAudoSource = document.getElementById("shootAudioSelect"); 
+
+    const selectedFile = fileInput.files[0];
+
+    if (selectedFile) {
+        const objectURL = URL.createObjectURL(selectedFile);
+        shootAudoSource.src = objectURL;
+        shootAudioSelected = objectURL;
+    }
+});
+
+defaultAudioSelect.addEventListener("change", function (event) {
+    const fileInput = event.target;
+    const defaultAudioSource = document.getElementById("dafaultAudioSelect"); 
+
+    const selectedFile = fileInput.files[0];
+
+    if (selectedFile) {
+        const objectURL = URL.createObjectURL(selectedFile);
+        defaultAudioSource.src = objectURL;
+        defaultButtonAudioSelected = objectURL;
+    }
+});
+
+reloadAudioSelect.addEventListener("change", function (event) {
+    const fileInput = event.target;
+    const reloadAudioSource = document.getElementById("reloadAudioSelect"); 
+
+    const selectedFile = fileInput.files[0];
+
+    if (selectedFile) {
+        const objectURL = URL.createObjectURL(selectedFile);
+        reloadAudioSource.src = objectURL;
+        reloadAudioSelected = objectURL;
+    }
+});
+
 // JOYSTICK : 
 
 const joystickContainer = document.getElementById('joystick-container');
@@ -73,6 +137,20 @@ changeGunButton.addEventListener("click", function () {
     }
 });
 
+// DEFAULT BUTTON : 
+
+const defaultButtons = document.querySelectorAll(".default-button");
+
+defaultButtons.forEach(function (dButton) {
+    dButton.addEventListener("click", function () {
+        let selectedDefaultAudio = defaultButtonAudioSelected || "./assets/button-effect.m4a";
+
+        const defaultAudioButton = new Audio(selectedDefaultAudio);
+        defaultAudioButton.play();
+    });
+});
+
+
 // BULLET SYSTEM : 
 
 const bulletSlot = document.getElementById("bullet-slot");
@@ -134,19 +212,16 @@ function createBulletClickHandler(bullet, index) {
 
 shootButton.addEventListener("click", function () {
     if (hotBarState === 1) {
-        // Crie um elemento de áudio
         const audio = new Audio("./assets/shoot-effect.m4a");
 
         audio.volume = 0.1;
 
-        // Condicional para definir o src
         if (bullets.length > 0) {
-            audio.src = "./assets/shoot-effect.m4a";
+            audio.src = shootAudioSelected || "./assets/shoot-effect.m4a";
         } else if (bullets.length === 0) {
-            audio.src = "./assets/empty-bullet-effect.m4a";
+            audio.src = reloadAudioSelected || "./assets/empty-bullet-effect.m4a";
         }
 
-        // Tocar o áudio
         audio.play();
 
         if (bullets.length > 0) {
@@ -158,6 +233,7 @@ shootButton.addEventListener("click", function () {
         }
     }
 });
+
 
 // DEV INPUT : 
 
@@ -176,10 +252,65 @@ shildInput.addEventListener("input",function(){
 });
 
 
+// FULLSCREEN : 
+
+const toggleFullscreenButton = document.getElementById("toggle-fullscreen");
+const smartphone = document.getElementById("smartphone");
+const fullscreenIcon = document.getElementById("fullscreen-icon");
+const devContainer = document.querySelector(".dev-container");
+const castleRainLogo = document.querySelector(".castle-rain-logo");
+
+let fullscreen = false;
+
+toggleFullscreenButton.addEventListener("click", function () {
+    fullscreen = !fullscreen;
+
+    if (fullscreen) {
+        smartphone.style.transition = "0.3s all";
+        smartphone.style.transform = "scale(1.5)";
+        fullscreenIcon.className = "ri-fullscreen-exit-line";
+        devContainer.style.display = "none";
+        castleRainLogo.style.display = "none";
+        setTimeout(() => {
+            smartphone.style.transition = "";
+        }, 1000);
+    }else{
+        smartphone.style.transition = "0.3s all";
+        smartphone.style.transform = "scale(1)";
+        fullscreenIcon.className = "ri-fullscreen-line";
+        devContainer.style.display = "flex";
+        castleRainLogo.style.display = "flex";
+        setTimeout(() => {
+            smartphone.style.transition = "";
+        }, 1000);
+    }
+});
 
 
+// MODAL : 
 
-    
+const openModalButton = document.getElementById("openModal");
+const modalContainer = document.getElementById("modal-container");
+const settingsIcon = document.getElementById("settings-icon");
+const modalShild = document.getElementById("modal-shild");
+
+openModalButton.addEventListener("click",function(){
+    isModal = !isModal;
+
+    if (isModal){
+        modalShild.style.display = "flex";
+        modalContainer.style.display = "flex";
+        modalContainer.style.animation = "modalUp 0.3s linear both";
+        settingsIcon.className = "ri-close-line";
+    }else{
+        modalShild.style.display = "none";
+        modalContainer.style.animation = "modalDown 0.3s linear both";
+        settingsIcon.className = "ri-settings-4-fill"
+        setTimeout(() => {
+            modalContainer.style.display = "none";
+        }, 100);
+    }
+});
 
 
 
